@@ -4,13 +4,18 @@ const screen = blessed.screen({
 });
 
 const Overview = require('./components/OverviewBox');
+const Hello = require('./components/HelloBox');
+
+
 const OverviewBox = Overview("Visão Geral", "sla")
+const HelloBox = Hello("Elismar", "12:45:45 PM")
 
 screen.title = "ASMMonitor";
 
 
 // Append our box to the screen.
 screen.append(OverviewBox);
+screen.append(HelloBox)
 
 // If our box is clicked, change the content.
 OverviewBox.on('click', function(data) {

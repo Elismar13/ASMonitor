@@ -1,12 +1,10 @@
 const blessed = require('blessed');
 
-// Create a box perfectly centered horizontally and vertically.
-const OverviewBox = (title, content) => blessed.box({
-    bottom: 'bottom',
+const HelloBox = (username, time) => blessed.box({
+    top:'top',
     left: 'left',
-    width: '40%',
-    height: '50%',
-    content: `{center}${title}{/center}\n ${content}`,
+    width: '30%',
+    height: '30%',
     tags: true,
     border: {
       type: 'line'
@@ -23,4 +21,4 @@ const OverviewBox = (title, content) => blessed.box({
     }
 });
 
-module.exports = OverviewBox;
+module.exports = HelloBox;
