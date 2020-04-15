@@ -1,30 +1,19 @@
 const os = require('os');
+const si = require('systeminformation');
 
-class SystemData extends os {
+class SystemData {
     constructor() {
-        this.operationalSystem = this.setSystemData();
-        this.cpu = this.setCPUData();
+        this.system;
+        this.cpu;
+        this.process;
+
+        this.getSystemData();
     }
 
-    setSystemData() {
-        this.operationalSystem = {
-            platform: super.platform(),
-            release: super.release()
-        }
-    }
-
-    setCPUData() {
-        this.cpu = {
-            cpus: os.cpus(),
-        }
-    }
-
-    getSystemData() {
-        return this.operationalSystem;
-    }
-
-    getCPUData() {
-        return this.cpu;
+    async getSystemData() {
+        this.system = await si.system();
+        this.cpu = await si.cpu();
+        this.process = await si.processes();
     }
 }
 

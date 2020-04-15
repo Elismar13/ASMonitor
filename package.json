@@ -5,7 +5,8 @@
   "author": "Elismar Sivla <elismarsilva.5@outlook.com>",
   "license": "MIT",
   "dependencies": {
-    "os": "^0.1.1"
+    "os": "^0.1.1",
+    "systeminformation": "^4.23.3"
   },
   "devDependencies": {
     "jest": "^25.3.0"
