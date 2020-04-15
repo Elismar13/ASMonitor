@@ -1,5 +1,11 @@
 const SystemData = require('./getOsData');
+const si = require('systeminformation');
 
-const System = new SystemData();
+async function getData() {
+    const system = new SystemData();
+    const systemData = await system.getSystemData();
 
-console.log(System.system);
+    console.log(systemData)
+}
+
+getData()

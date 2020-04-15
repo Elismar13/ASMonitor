@@ -1,20 +1,27 @@
-const os = require('os');
 const si = require('systeminformation');
 
 class SystemData {
     constructor() {
-        this.system;
-        this.cpu;
-        this.process;
-
-        this.getSystemData();
+        this.state = {};
     }
-
+    
     async getSystemData() {
-        this.system = await si.system();
-        this.cpu = await si.cpu();
-        this.process = await si.processes();
+        const system = await si.system();
+        const cpu = await si.cpu();
+
+        return {
+            system,
+            cpu,
+        }
     }
-}
+
+    async getProcess() {
+        return await si.processes();
+    }
+
+    async getGraphics() {
+        return await si.graphics();
+    }
+} 
 
 module.exports = SystemData;
