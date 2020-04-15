@@ -1,27 +1,13 @@
 const si = require('systeminformation');
 
-class SystemData {
-    constructor() {
-        this.state = {};
-    }
-    
-    async getSystemData() {
-        const system = await si.system();
-        const cpu = await si.cpu();
+async function getData() {
+    const motherboard = await si.baseboard();
+    const memory = await si.mem();
+    const graphics = await si.graphics();
+    const storage = await si.diskLayout();
+    const operationalSystem = await si.osInfo();
 
-        return {
-            system,
-            cpu,
-        }
-    }
+    console.log(operationalSystem)
+}
 
-    async getProcess() {
-        return await si.processes();
-    }
-
-    async getGraphics() {
-        return await si.graphics();
-    }
-} 
-
-module.exports = SystemData;
+getData()
