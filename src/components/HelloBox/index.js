@@ -1,6 +1,6 @@
 const blessed = require('blessed');
 
-const HelloBox = (username, time) => blessed.box({
+const HelloBox = blessed.box({
     top:'top',
     left: 'left',
     width: '30%',

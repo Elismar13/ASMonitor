@@ -1,17 +1,23 @@
+
+
+
 const blessed = require('blessed');
+
+
+
 const screen = blessed.screen({
   smartCSR: true
 });
 
-const Overview = require('./components/OverviewBox');
-const Hello = require('./components/HelloBox');
+const OverviewBox = require('./components/OverviewBox');
+const HelloBox = require('./components/HelloBox');
 
 
-const OverviewBox = Overview("Visão Geral", "sla")
-const HelloBox = Hello("Elismar", "12:45:45 PM")
+const OverView = getOverViewData();
 
 screen.title = "ASMMonitor";
 
+OverviewBox.setContent()
 
 // Append our box to the screen.
 screen.append(OverviewBox);

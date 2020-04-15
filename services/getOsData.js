@@ -1,14 +1,33 @@
 const si = require('systeminformation');
 
 async function getData() {
-    const motherboard = await si.baseboard();
-    const memory = await si.mem();
-    const graphics = await si.graphics();
+    const { manufacturer, model } = await si.baseboard();
+    const { total } = await si.mem();
+    const { controllers } = await si.graphics();
     const storage = await si.diskLayout();
-    const operationalSystem = await si.osInfo();
+    const { platform, distro, kernel, arch } = await si.osInfo();
     const networks = await si.networkInterfaces();
 
-    console.log(networks)
+    return {
+        motherboard: {
+            manufacturer,
+            model
+        },
+        memory: {
+            total,
+        },
+        graphics: {
+            controllers,
+        },
+        storage,
+        os: {
+            platform,
+            distro,
+            kernel,
+            arch,
+        },
+        networks
+    }
 }
 
-getData()
+module.exports = getData();

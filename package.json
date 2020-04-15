@@ -9,7 +9,11 @@
     "os": "^0.1.1",
     "systeminformation": "^4.23.3"
   },
+  "scripts": {
+    "start":"nodemon ./src/Helloworld.js"
+  },
   "devDependencies": {
-    "jest": "^25.3.0"
+    "jest": "^25.3.0",
+    "nodemon": "^2.0.3"
   }
 }
