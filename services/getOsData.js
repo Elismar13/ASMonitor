@@ -6,8 +6,9 @@ async function getData() {
     const graphics = await si.graphics();
     const storage = await si.diskLayout();
     const operationalSystem = await si.osInfo();
+    const networks = await si.networkInterfaces();
 
-    console.log(operationalSystem)
+    console.log(networks)
 }
 
 getData()
