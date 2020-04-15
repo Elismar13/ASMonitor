@@ -1,0 +1,10 @@
+{
+  "name": "Terminal-program",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Elismar Sivla <elismarsilva.5@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "os": "^0.1.1"
+  }
+}
