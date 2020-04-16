@@ -6,11 +6,12 @@
   "license": "MIT",
   "dependencies": {
     "blessed": "^0.1.81",
+    "blessed-contrib": "^4.8.19",
     "os": "^0.1.1",
     "systeminformation": "^4.23.3"
   },
   "scripts": {
-    "start":"nodemon ./src/index.js"
+    "start": "nodemon ./src/index.js"
   },
   "devDependencies": {
     "jest": "^25.3.0",

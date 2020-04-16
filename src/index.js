@@ -7,6 +7,7 @@ const ApplicationData = new AppData();
 //Boxes
 const OverviewBox = require('./components/OverviewBox');
 const HelloBox = require('./components/HelloBox');
+const CPUGraph = require('./components/CPUGraph');
 
 //Utils
 const byteToMegabyte = require('./utils/convertBytesToMega');
@@ -25,6 +26,19 @@ async function retriveInitialData() {
     Application.renderScreen();
 }
 
+var series1 = {
+    title: 'CPU1',
+    x: ['t1', 't2', 't3', 't4'],
+    y: [5, 1, 7, 5]
+ }
+var series2 = {
+    title: 'CPU2',
+    x: ['t1', 't3', 't4'],
+    y: [2, 4, 10]
+}
+
+Application.appendToScreen(CPUGraph) //must append before setting data
+CPUGraph.setData([series1, series2])
 
 //Dados
 HelloBox.setContent(`Olá, Elismar!\nSeja bem-vindo ao ASMonitor\n\n17:38:56 PM : GMT -03:00`);

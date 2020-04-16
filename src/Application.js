@@ -1,4 +1,6 @@
 const blessed = require('blessed');
+const contrib = require('blessed-contrib');
+
 const ApplicationData = require('./ApplicationData');
 
 class Application extends ApplicationData {
