@@ -5,6 +5,8 @@ const HelloBox = blessed.box({
     left: 'left',
     width: '30%',
     height: '30%',
+    align: 'center',
+    valign: 'middle',
     tags: true,
     border: {
       type: 'line'

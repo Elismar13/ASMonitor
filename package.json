@@ -10,7 +10,7 @@
     "systeminformation": "^4.23.3"
   },
   "scripts": {
-    "start":"nodemon ./src/Helloworld.js"
+    "start":"nodemon ./src/index.js"
   },
   "devDependencies": {
     "jest": "^25.3.0",

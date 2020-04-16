@@ -9,10 +9,7 @@ async function getData() {
     const networks = await si.networkInterfaces();
 
     return {
-        motherboard: {
-            manufacturer,
-            model
-        },
+        motherboard: manufacturer+model,
         memory: {
             total,
         },
@@ -30,4 +27,4 @@ async function getData() {
     }
 }
 
-module.exports = getData();
+module.exports = getData;

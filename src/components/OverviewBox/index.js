@@ -6,11 +6,14 @@ const OverviewBox = blessed.box({
     left: 'left',
     width: '40%',
     height: '50%',
-    tags: true,
+    align: 'left',
+    valign: 'middle',
+    tags: true,    
     border: {
       type: 'line'
     },
     style: {
+
       fg: 'white',
       bg: 'transparent',
       border: {
