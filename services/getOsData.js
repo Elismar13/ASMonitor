@@ -5,9 +5,10 @@ async function getData() {
     const { total } = await si.mem();
     const { controllers } = await si.graphics();
     const storage = await si.diskLayout();
-    const { platform, distro, kernel, arch } = await si.osInfo();
+    const { platform, distro, kernel, arch, } = await si.osInfo();
     const networks = await si.networkInterfaces();
 
+    //console.log(controllers)
     return {
         motherboard: manufacturer+model,
         memory: {

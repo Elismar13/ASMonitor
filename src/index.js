@@ -8,18 +8,19 @@ const ApplicationData = new AppData();
 const OverviewBox = require('./components/OverviewBox');
 const HelloBox = require('./components/HelloBox');
 
-let Data;
+//Utils
+const byteToMegabyte = require('./utils/convertBytesToMega');
 
 async function retriveInitialData() {
-    const Data = await ApplicationData.getOverViewData();
+    const data = await ApplicationData.getOverViewData();
     
     OverviewBox.setContent(
-        "Placa-mãe: " + Data.motherboard +
-        "\nMemória total: " + Math.round(Data.memory.total/1024/1024) + ' MB'+
-        "\nGráficos: " + Data.graphics.controller +
-        "\nArmazenamento: " + Data.storage +
-        "\nSO: " + "" +
-        "\nInternet: ");
+        "Placa-mãe: " + data.motherboard +
+        "\nMemória total: " + byteToMegabyte(data.memory.total) + ' MB'+
+        "\nGráficos: " + data.graphics.controllers[0].model +
+        "\nArmazenamento: " + data.storage[0].type + ' ' + data.storage[0].name +
+        "\nSO: " + data.os.platform + ' ' + data.os.distro + " " + data.os.arch +
+        "\nInternet: " + data.networks[0].iface);
     
     Application.renderScreen();
 }
