@@ -40,8 +40,8 @@ var series2 = {
 Application.appendToScreen(CPUGraph) //must append before setting data
 CPUGraph.setData([series1, series2])
 
-//Dados
 HelloBox.setContent(`Olá, Elismar!\nSeja bem-vindo ao ASMonitor\n\n17:38:56 PM : GMT -03:00`);
+OverviewBox.setContent("{center}Carregando...{/center}")
 
 retriveInitialData();
 
