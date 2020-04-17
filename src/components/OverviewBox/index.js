@@ -13,7 +13,6 @@ const OverviewBox = blessed.box({
       type: 'line'
     },
     style: {
-
       fg: 'white',
       bg: 'transparent',
       border: {

@@ -1,6 +1,9 @@
 const si = require('systeminformation');
+const os = require('os');
 
 async function getData() {
+    const username = os.hostname();
+    const cpu = await si.cpu()
     const { manufacturer, model } = await si.baseboard();
     const { total } = await si.mem();
     const { controllers } = await si.graphics();
@@ -10,6 +13,8 @@ async function getData() {
 
     //console.log(controllers)
     return {
+        username,
+        cpu: cpu.manufacturer + cpu.brand,
         motherboard: manufacturer+model,
         memory: {
             total,

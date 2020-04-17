@@ -1,4 +1,5 @@
 const si = require('systeminformation');
+const bytesToMegabytes = require('../src/utils/convertBytesToMega');
 
 async function getDynamicOSData() {
     const { total, free, used, } = await si.mem();
@@ -7,9 +8,9 @@ async function getDynamicOSData() {
 
     return {
         memory: {
-            total, 
-            free,
-            used
+            totalmem: bytesToMegabytes(total) , 
+            freemem:free,
+            usedmem: bytesToMegabytes(used)-1000,
         },
         cpu:{
             avgload,
