@@ -6,7 +6,7 @@ const interval = 1000
 
 setInterval(() => {
     data().then(data => {
-        console.log(data.process)
+        console.log(data.cpu.cpus)
         console.log(convertToPercentage(data.process.running, data.process.all))
     });
 

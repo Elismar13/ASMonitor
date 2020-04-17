@@ -14,8 +14,9 @@ const ProcessesBox = require('./components/ProcessesBox');
 //Utils
 const byteToMegabyte = require('./utils/convertBytesToMega');
 const percentage = require('../src/utils/convertToPercentage')
+const randomColor = require('../src/utils/randomColor')
 
-
+const colors = ['blue', 'green', 'red', 'orange']
 async function retriveInitialData() {
     const data = await ApplicationData.getOverViewData();
     
@@ -36,17 +37,38 @@ async function retriveInitialData() {
 
 
 setInterval(async function retriveDynamicData() {
-    let CPUNUMBER = 0;
+    let CPUNUMBER = -1;
     const dynamicData = await ApplicationData.getDynamicData();
     const { cpus } = dynamicData.cpu;
     const memory = dynamicData.memory;
     const processes = dynamicData.process;
+
+    if(cpuGraphData.length < 1) {
+        cpuGraphData = cpus.map(() => {
+            CPUNUMBER++;
+            return {
+                title: 'CPU'+CPUNUMBER.toString(),
+                x: Array.from({length: 15}, (v, k) => 15-k).map((value) => value.toString()),
+                y: [],
+                style: {
+                    line: randomColor()
+                }
+            }
+        }, CPUNUMBER)
+    } else {
+        for(let i = 0; i < cpuGraphData.length; i++ ) {
+            if(cpuGraphData[i].y.length > 15) cpuGraphData[i].y.shift();
+            cpuGraphData[i].y.push(cpus[i].load);
+            // console.log(cpus[i].load)
+        }
+    }
 
     if(memoryGraphData.y.length > 15) memoryGraphData.y.shift();
 
     memoryGraphData.y.push((memory.usedmem / memory.totalmem) * 100);
 
     //console.log(memoryGraphData
+    CPUGraph.setData(cpuGraphData)
     MemoryGraph.setData([memoryGraphData]);
     ProcessesBox.setData([
                             {
