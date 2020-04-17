@@ -7,6 +7,9 @@ const CPUGraph = contrib.line({
         text: 'green',
         baseline: 'black',
     },
+    border: {
+        type: 'line'
+    },
     width: '60%',
     height: '50%',
     left: '40%',

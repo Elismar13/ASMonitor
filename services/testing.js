@@ -3,5 +3,5 @@ const data = require('./getDynamicOSData')
 const interval = 1000
 
 setInterval(() => {
-    data().then(data => console.log(data))
+    data().then(data => console.log(data.cpu.cpus))
 }, interval);

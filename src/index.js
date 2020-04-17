@@ -26,19 +26,37 @@ async function retriveInitialData() {
     Application.renderScreen();
 }
 
-var series1 = {
-    title: 'CPU1',
-    x: ['t1', 't2', 't3', 't4'],
-    y: [5, 1, 7, 5]
- }
-var series2 = {
-    title: 'CPU2',
-    x: ['t1', 't3', 't4'],
-    y: [2, 4, 10]
-}
+setTimeout(async function retriveDynamicData() {
+    let CPUNUMBER = 0;
+    const dynamicData = await ApplicationData.getDynamicData();
+    const cpus = dynamicData.cpu.cpus.map((value) => { 
+        CPUNUMBER++;
+        return {
+            title: "CPU".concat(CPUNUMBER),
+            
+        } 
+    }, CPUNUMBER);
+    console.log(cpus);
+}, 1000);
+
+var data = [
+    {
+        title: 'CPU1',
+        x: ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8'],
+        y: [5, 1, 7, 5, 56, 89, 20, 1, 3, 54, 65]
+    },
+    {
+        title: 'CPU2',
+        style: {
+            line: 'blue',
+        },
+        x: ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8'],
+        y: [2, 4, 10, 12, 56, 89, 20, 1, 3, 8]
+    }
+]
 
 Application.appendToScreen(CPUGraph) //must append before setting data
-CPUGraph.setData([series1, series2])
+CPUGraph.setData(data)
 
 HelloBox.setContent(`Olá, Elismar!\nSeja bem-vindo ao ASMonitor\n\n17:38:56 PM : GMT -03:00`);
 OverviewBox.setContent("{center}Carregando...{/center}")
