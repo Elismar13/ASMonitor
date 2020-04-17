@@ -1,7 +1,7 @@
 const AppData = require('./ApplicationData');
 const App = require('./Application');
 
-const Application = new App("ESMonitor beta 0.1 - Elismar");
+const Application = new App("ESMonitor beta 0.2 - Elismar");
 const ApplicationData = new AppData();
 
 //Boxes
@@ -9,9 +9,11 @@ const OverviewBox = require('./components/OverviewBox');
 const HelloBox = require('./components/HelloBox');
 const CPUGraph = require('./components/CPUGraph');
 const MemoryGraph = require('./components/MemoryGraph');
+const ProcessesBox = require('./components/ProcessesBox');
 
 //Utils
 const byteToMegabyte = require('./utils/convertBytesToMega');
+const percentage = require('../src/utils/convertToPercentage')
 
 
 async function retriveInitialData() {
@@ -31,20 +33,39 @@ async function retriveInitialData() {
     Application.renderScreen();
 }
 
-let cpuGraphData = [];
 
 
 setInterval(async function retriveDynamicData() {
     let CPUNUMBER = 0;
     const dynamicData = await ApplicationData.getDynamicData();
+    const { cpus } = dynamicData.cpu;
     const memory = dynamicData.memory;
+    const processes = dynamicData.process;
 
     if(memoryGraphData.y.length > 15) memoryGraphData.y.shift();
 
     memoryGraphData.y.push((memory.usedmem / memory.totalmem) * 100);
 
-    //console.log(memoryGraphData)
+    //console.log(memoryGraphData
     MemoryGraph.setData([memoryGraphData]);
+    ProcessesBox.setData([
+                            {
+                                percent: percentage(processes.running, processes.all),
+                                label: 'Execução',
+                                color:'yellow'
+                            }, 
+                            {
+                                percent: percentage(processes.sleeping, processes.all),
+                                label: 'Dormindo',
+                                color:'green'
+                            }, 
+                            {
+                                percent: percentage(processes.blocked, processes.all),
+                                label: 'bloqueados',
+                                color:'cyan'
+                            }, 
+                        ] 
+                        );
     Application.renderScreen()
     // const cpus = dynamicData.cpu.cpus.map((value) => { 
     //     CPUNUMBER++;
@@ -61,22 +82,33 @@ setInterval(async function retriveDynamicData() {
     //console.log(data[0]);
 }, 1000);
 
-var memoryGraphData = {
+let memoryGraphData = {
     title: 'Memory',
     x: Array.from({length: 15}, (v, k) => 15-k).map((value) => value.toString()),
     y: []
 };
 
-var data = [
+let cpuGraphData = [];
+
+let data = [
     {
         title: 'CPU1',
-        x: ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8'],
-        y: [5, 1, 7, 5, 56, 89, 20, 1, 3, 54, 65]
+        x: Array.from({length: 15}, (v, k) => 15-k).map((value) => value.toString()),
+        y: [5, 1, 7, 5, 56, 89, 20, 1, 3, 54, 65, 87, 56, 45, 56]
+    },
+    {
+        title: 'CPU2',
+        x: Array.from({length: 15}, (v, k) => 15-k).map((value) => value.toString()),
+        y: [78,98,96,96,54,21,32,54,1,2,3,57,89,54,2],
+        style: {
+            line: 'red'
+        }
     },
 ]
 
-Application.appendToScreen(MemoryGraph) //must append before setting data
-Application.appendToScreen(CPUGraph)
+Application.appendToScreen(MemoryGraph); //must append before setting data
+Application.appendToScreen(CPUGraph);
+Application.appendToScreen(ProcessesBox);
 CPUGraph.setData(data)
 
 MemoryGraph.setData([memoryGraphData]);

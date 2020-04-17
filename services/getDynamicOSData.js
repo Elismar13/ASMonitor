@@ -21,7 +21,6 @@ async function getDynamicOSData() {
             running,
             blocked,
             sleeping,
-            list,
         },
     }
 }

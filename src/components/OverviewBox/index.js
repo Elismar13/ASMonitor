@@ -5,7 +5,7 @@ const OverviewBox = blessed.box({
     top: '30%',
     left: 'left',
     width: '40%',
-    height: '50%',
+    height: '45%',
     align: 'left',
     valign: 'middle',
     tags: true,    

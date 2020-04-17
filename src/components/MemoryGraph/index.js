@@ -3,7 +3,7 @@ const contrib = require('blessed-contrib');
 
 const MemoryGraph = contrib.line({
     style: {
-        line: 'yellow',
+        line: 'blue',
         text: 'green',
         baseline: 'black',
     },
