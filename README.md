@@ -1,6 +1,7 @@
 <h1 align="center">
     ASMMonitor
 </h1>
+
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Elismar13/SemanaOmnistack11?color=%2304D361">
 
@@ -30,7 +31,7 @@
 </p>
 
 <p aligh="center">
-	inHome API are available in: <a href="https://inhome-backend.herokuapp.com">https://inhome-backend.herokuapp.com</a>
+	<img src=".github/running.png" >
 </p>
 
 ## 💻 Project
@@ -42,9 +43,9 @@ ASMonitor é uma ferramenta para shells que tem o intuito de mostrar, de forma s
 This project was developed with the following technologies:
 
 - [Node.js](https://nodejs.org/en/) 
--[blessed](https://github.com/chjj/blessed#style)
--[blessed-contrib](https://github.com/yaronn/blessed-contrib)
--[System Informator](https://systeminformation.io/cpu.html)
+- [blessed](https://github.com/chjj/blessed#style)
+- [blessed-contrib](https://github.com/yaronn/blessed-contrib)
+- [System Informator](https://systeminformation.io/cpu.html)
 
 ## :wrench: How to use
 
