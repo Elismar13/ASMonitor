@@ -76,7 +76,9 @@ var data = [
 ]
 
 Application.appendToScreen(MemoryGraph) //must append before setting data
-//CPUGraph.setData(data)
+Application.appendToScreen(CPUGraph)
+CPUGraph.setData(data)
+
 MemoryGraph.setData([memoryGraphData]);
 Application.renderScreen()
 
