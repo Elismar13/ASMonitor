@@ -20,16 +20,16 @@ const colors = ['blue', 'green', 'red', 'orange']
 async function retriveInitialData() {
     const data = await ApplicationData.getOverViewData();
     
-    HelloBox.setContent(`Olá, {bold}${data.username}{/bold}!\nSeja bem-vindo ao ASMonitor\n\n17:38:56 PM : GMT -03:00`);
+    HelloBox.setContent(`Olá, {bold}${data.username}{/bold}!\nSeja bem-vindo ao ASMonitor\n`);
 
     OverviewBox.setContent(
         "{bold}Placa-mãe{/bold}: " + data.motherboard +
         "\n{bold}Processador:{/bold} " + data.cpu +
         "\n{bold}Memória total:{/bold} " + byteToMegabyte(data.memory.total) + ' MB'+
         "\n{bold}Gráficos:{/bold} " + data.graphics.controllers[0].model +
-        "\n{bold}Armazenamento:{/bold} " + data.storage[0].type + ' ' + data.storage[0].name +
+        "\n{bold}Armazenamento:{/bold} " + data.storage.map((storage) => `${storage.name} ${storage.size}, `) +
         "\n{bold}SO:{/bold} " + data.os.platform + ' ' + data.os.distro + " " + data.os.arch +
-        "\n{bold}Internet:{/bold} " + "Adaptador eth0 GIGABYTE");
+        "\n{bold}Internet:{/bold} " + data.networks.map((network) => network.ifaceName !== null ? `${network.ifaceName} ` : ''));
     
     Application.renderScreen();
 }
@@ -42,6 +42,7 @@ setInterval(async function retriveDynamicData() {
     const { cpus } = dynamicData.cpu;
     const memory = dynamicData.memory;
     const processes = dynamicData.process;
+    const time = dynamicData.time;
 
     if(cpuGraphData.length < 1) {
         cpuGraphData = cpus.map(() => {
@@ -64,10 +65,9 @@ setInterval(async function retriveDynamicData() {
     }
 
     if(memoryGraphData.y.length > 15) memoryGraphData.y.shift();
-
     memoryGraphData.y.push((memory.usedmem / memory.totalmem) * 100);
 
-    //console.log(memoryGraphData
+    HelloBox.setLine(4, `${time}`)
     CPUGraph.setData(cpuGraphData)
     MemoryGraph.setData([memoryGraphData]);
     ProcessesBox.setData([
@@ -89,19 +89,7 @@ setInterval(async function retriveDynamicData() {
                         ] 
                         );
     Application.renderScreen()
-    // const cpus = dynamicData.cpu.cpus.map((value) => { 
-    //     CPUNUMBER++;
-    //     return {
-    //         title: "CPU".concat(CPUNUMBER),
-    //     } 
-    // }, CPUNUMBER);
 
-    // data[0].x.push('T'+data[0].x.length);
-    // data[0].y.push(Math.random()*100);
-
-    // CPUGraph.setData(data)
-    // Application.renderScreen()
-    //console.log(data[0]);
 }, 1000);
 
 let memoryGraphData = {

@@ -11,7 +11,7 @@ const CPUGraph = contrib.line({
         type: 'line'
     },
     width: '60%',
-    height: '50%',
+    height: '45%',
     left: '40%',
     top:'top',
     xLabelPadding: 1,

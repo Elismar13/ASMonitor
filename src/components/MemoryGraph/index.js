@@ -11,14 +11,15 @@ const MemoryGraph = contrib.line({
         type: 'line'
     },
     width: '60%',
-    height: '30%',
+    height: '35%',
     left: '40%',
-    top:'50%',
+    top:'45%',
     xLabelPadding: 1,
     xPadding: 1,
     maxY: 100,
+    showNthLabel: true,
     showLegend: false,
-    wholeNumbersOnly: false,
+    wholeNumbersOnly: true,
     label: " Consumo de memória (em %) ",
 });
 module.exports = MemoryGraph;
