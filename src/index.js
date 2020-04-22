@@ -27,8 +27,8 @@ async function retriveInitialData() {
         "\n{bold}Processador:{/bold} " + data.cpu +
         "\n{bold}Memória total:{/bold} " + byteToMegabyte(data.memory.total) + ' MB'+
         "\n{bold}Gráficos:{/bold} " + data.graphics.controllers[0].model +
-        "\n{bold}Armazenamento:{/bold} " + data.storage.map((storage) => `${storage.name} ${storage.size}, `) +
-        "\n{bold}SO:{/bold} " + data.os.platform + ' ' + data.os.distro + " " + data.os.arch +
+        "\n{bold}Armazenamento:{/bold} " + data.storage.map((storage) => `${storage.name} ${byteToMegabyte(storage.size)}MB, `) +
+        "\n{bold}SO:{/bold} " + `${data.os.platform} ${data.os.distro} ${data.os.arch}` +
         "\n{bold}Internet:{/bold} " + data.networks.map((network) => network.ifaceName !== null ? `${network.ifaceName} ` : ''));
     
     Application.renderScreen();
