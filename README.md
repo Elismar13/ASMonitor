@@ -36,7 +36,7 @@
 
 ## 💻 Project
 
-ASMonitor é uma ferramenta para shells que tem o intuito de mostrar, de forma simples e objetiva, dados do hardware e do sistema operacional.
+ASMonitor is a tool for shells that aims to show to user, in a simple and objective way, data of the hardware and the operational system.
 
 ## :rocket: Technologies
 
@@ -49,10 +49,14 @@ This project was developed with the following technologies:
 
 ## :wrench: How to use
 
-1. primeiro você precisa instalar o [Node.js](https://nodejs.org/en/)  em sua versão 12 ou superior.
-2. clone o repositório no terminal com o seguinte comando:
+1. First, you need [Node.js](https://nodejs.org/en/) version 12.16.0 or higher. 
+2. Clone this repository in the terminal with this command:
 `git clone https://github.com/Elismar13/ASMonitor.git`
-3. Na pasta ASMonitor, rode o seguinte comando:
+3. In the ASMonitor folder, runs this command:
+`npm` 
+or, if you have yarn installed on your machine:
+`yarn`
+4. Finally, runs this command:
 `node src/index.js`
 
 
