@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Elismar13/SemanaOmnistack11?color=%2304D361">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Elismar13/ASMonitor?color=%2304D361">
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/Elismar13/ASMonitor">
 	
@@ -51,13 +51,18 @@ This project was developed with the following technologies:
 
 1. First, you need [Node.js](https://nodejs.org/en/) version 12.16.0 or higher. 
 2. Clone this repository in the terminal with this command:
-`git clone https://github.com/Elismar13/ASMonitor.git`
+
+	`git clone https://github.com/Elismar13/ASMonitor.git`
+
 3. In the ASMonitor folder, runs this command:
-`npm` 
-or, if you have yarn installed on your machine:
-`yarn`
+
+	`npm update` 
+	or, if you have yarn installed on your machine:
+	`yarn`
+	
 4. Finally, runs this command:
-`node src/index.js`
+
+	`node src/index.js`
 
 
 ## 🤔 How to contribute
