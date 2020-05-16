@@ -57,7 +57,9 @@ This project was developed with the following technologies:
 3. In the ASMonitor folder, runs this command:
 
 	`npm update` 
+	
 	or, if you have yarn installed on your machine:
+	
 	`yarn`
 	
 4. Finally, runs this command:
