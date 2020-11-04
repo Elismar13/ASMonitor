@@ -18,7 +18,7 @@ const CPUGraph = contrib.line({
     xPadding: 1,
     showLegend: true,
     wholeNumbersOnly: false,
-    label: "   CPU Utilization (%)",
+    label: "   Utilização do CPU (%)",
 });
 
 module.exports = CPUGraph;
