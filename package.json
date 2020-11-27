@@ -9,7 +9,7 @@
     "blessed-contrib": "^4.8.19",
     "moment": "^2.24.0",
     "os": "^0.1.1",
-    "systeminformation": "^4.23.3"
+    "systeminformation": "^4.30.5"
   },
   "scripts": {
     "start": "nodemon ./src/index.js"
