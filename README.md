@@ -1,5 +1,5 @@
 <h1 align="center">
-    ASMMonitor
+    ASMonitor
 </h1>
 
 <p align="center">
